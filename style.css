@@ -154,101 +154,48 @@ body {
 }
 
 /* 底部四项数据网格 */
+/* --- 修改主卡片样式 --- */
+.main-card {
+    background: white;
+    width: 92%;
+    /* 默认占据屏幕宽度的 92%，防止手机上贴边 */
+    max-width: 650px;
+    /* 在大屏幕上最大不超过 650px */
+    padding: 60px 20px 40px;
+    /* 减小内边距，给手机留空间 */
+    border-radius: 40px;
+    /* 稍微减小圆角 */
+    border: 6px solid #FF9999;
+    box-shadow: 0 15px 0 #FFD1DC;
+    text-align: center;
+    margin: 20px auto;
+    /* 居中并增加上下边距 */
+}
+
+/* --- 调整四项数据的布局 (在手机上自动换行) --- */
 .stats-row {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    /* 手机端每行显示2个 */
+    gap: 10px;
+    /* 减小间距 */
 }
 
-.stat-card {
-    background: #FFF0F5;
-    padding: 25px;
-    border-radius: 40px;
-    border: 3px solid #FFE4E1;
-    transition: 0.3s;
-}
+/* --- 如果在特别小的手机上依然超出，增加这个媒体查询 --- */
+@media (max-width: 480px) {
+    #temp-display {
+        font-size: 70px;
+        /* 手机端温度字号调小 */
+    }
 
-.stat-card:hover {
-    background: white;
-    transform: translateY(-5px);
-}
+    .cat-wrapper {
+        width: 180px;
+        /* 手机端猫咪调小 */
+        height: 180px;
+    }
 
-.stat-card span {
-    display: block;
-    font-size: 16px;
-    color: #B2918F;
-    margin-bottom: 5px;
-}
-
-.stat-card strong {
-    font-size: 24px;
-    color: #5D4037;
-
-    /* --- 手机端适配 (响应式设计) --- */
-    @media (max-width: 600px) {
-
-        /* 1. 让主卡片变窄，适应手机宽度 */
-        .main-card {
-            width: 92%;
-            /* 占据屏幕宽度的 92% */
-            padding: 60px 20px 40px;
-            /* 缩小内边距 */
-            border-radius: 40px;
-            /* 圆角稍微调小一点 */
-            border-width: 5px;
-            /* 边框变细 */
-        }
-
-        /* 2. 缩小猫咪尺寸，防止占位太大 */
-        .cat-wrapper {
-            width: 180px;
-            height: 180px;
-        }
-
-        /* 3. 调整对话气泡大小 */
-        .chat-bubble {
-            font-size: 14px;
-            padding: 10px 15px;
-            top: -45px;
-        }
-
-        /* 4. 缩小温度字体，防止换行 */
-        #temp-display {
-            font-size: 70px;
-        }
-
-        #weather-icon {
-            width: 80px;
-        }
-
-        /* 5. 调整底部四格数据：在小手机上变成两行两列或一行一个 */
-        .stats-row {
-            gap: 10px;
-        }
-
-        .stat-card {
-            padding: 15px 10px;
-            border-radius: 25px;
-        }
-
-        .stat-card strong {
-            font-size: 18px;
-            /* 缩小数值字体 */
-        }
-
-        .stat-card span {
-            font-size: 12px;
-            /* 缩小标签字体 */
-        }
-
-        /* 6. 搜索框优化：增大点击区域，方便手指操作 */
-        .search-box input {
-            padding: 15px;
-            font-size: 16px;
-        }
-
-        .search-box button {
-            padding: 0 15px;
-        }
+    .stat-card strong {
+        font-size: 16px;
+        /* 底部数值调小 */
     }
 }
